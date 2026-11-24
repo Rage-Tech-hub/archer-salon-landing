@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#3E1F2E" />
+
+    <!-- ============================================================
+         META — targets "hair salon / hair color / makeup Atlanta GA"
+         Business name, city, phone and email supplied by the owner.
+         ============================================================ -->
+    <title>Archer Salon — Hair &amp; Makeup Salon in Atlanta, GA | Color, Cuts &amp; Bridal</title>
+    <meta
+      name="description"
+      content="Archer Salon is a hair and makeup studio at Salon Lofts – Ansley Square on Piedmont Ave NE in Atlanta, GA. Cuts, color, highlights, keratin and bridal makeup with the price confirmed before we start. Call (678) 333-5534."
+    />
+    <link rel="canonical" href="https://www.google.com/maps/place/Archer+Salon" />
+    <meta name="robots" content="index,follow" />
+
+    <!-- Open Graph (no website exists yet — GBP + Instagram are the current properties) -->
+    <meta property="og:type" content="business.business" />
+    <meta property="og:title" content="Archer Salon — Hair &amp; Makeup in Atlanta, GA" />
+    <meta
+      property="og:description"
+      content="One stylist, one private suite, price confirmed before we start. Color, cuts and makeup on Piedmont Ave NE, Atlanta."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- ============================================================
+         TYPE — Bodoni Moda (fashion masthead) + Archivo (grotesque).
+         Both loaded from Google Fonts; serif/sans fallbacks declared
+         in src/index.css if the request is blocked.
+         ============================================================ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ============================================================
+         LocalBusiness JSON-LD — VERIFIED DATA ONLY.
+         [VERIFIED: https://reviews.birdeye.com/archer-salon-170256897119510
+            → mirrors the Google Business Profile: name, street address,
+            telephone, aggregateRating 5 / 4 reviews, opening hours.]
+         [VERIFIED: https://salonlofts.com/nicholas_archer → same phone.]
+         NO url property: the business has no website yet [UNKNOWN].
+         NO priceRange / no geo coordinates: not published in any source
+         found [UNKNOWN] — deliberately omitted rather than guessed.
+         ============================================================ -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BeautySalon",
+        "name": "Archer Salon",
+        "description": "Hair and makeup salon in Atlanta, GA. Cuts, hair color, highlights, balayage, keratin smoothing, hair extensions and makeup by request.",
+        "telephone": "+1-678-333-5534",
+        "email": "archersalons@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1512 suite 8, Piedmont Ave NE",
+          "addressLocality": "Atlanta",
+          "addressRegion": "GA",
+          "postalCode": "30324",
+          "addressCountry": "US"
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Atlanta" },
+          { "@type": "AdministrativeArea", "name": "Georgia" }
+        ],
+        "sameAs": ["https://www.instagram.com/nick_archer78"],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5.0",
+          "reviewCount": "4",
+          "bestRating": "5"
+        },
+        "openingHoursSpecification": [
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "10:00", "closes": "19:00" },
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "09:00", "closes": "19:00" },
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "10:00", "closes": "19:00" },
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "09:00", "closes": "19:00" },
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "17:00" },
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "10:00", "closes": "18:00" }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

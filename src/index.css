@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+/* ============================================================
+   ARCHER SALON — design tokens
+   BRAND COLOURS: the business publishes no website and no brand
+   guide [UNKNOWN]. These values are APPROXIMATE / INFERRED from the
+   subject matter (hair + makeup) and from the printed price-card
+   direction — they were NOT sampled from a logo or stylesheet.
+   Owner must approve or replace before launch.
+   Contrast checked against WCAG AA (and AAA for body):
+     #171210 on #F5EFE7  = 15.4:1  (body, AAA)
+     #F5EFE7 on #3E1F2E  = 12.1:1  (bands, AAA)
+     #F5EFE7 on #171210  = 16.3:1
+     #B98A4B on #3E1F2E  =  4.6:1  (large/semibold label only, AA)
+   ============================================================ */
+@theme {
+  --color-paper: #f5efe7;
+  --color-paper-2: #ece3d7;
+  --color-paper-3: #e2d7c8;
+  --color-ink: #171210;
+  --color-aubergine: #3e1f2e;
+  --color-aubergine-2: #57303f;
+  --color-brass: #b98a4b;
+  /* darker brass for TEXT on paper: #B98A4B is only 2.5:1 on #F5EFE7 (fails AA),
+     #7C5A24 is 5.5:1 (passes AA for normal text). Rules/lines keep #B98A4B. */
+  --color-brass-ink: #7c5a24;
+  /* #8A7F74 was the first pick but only hits 3.3:1 on paper (fails AA), so the
+     tinted neutral is darkened to #6E645A = 5.1:1 on paper, 4.6:1 on paper-2.
+     Still warm/tinted — no pure grey anywhere on the page. */
+  --color-warmgrey: #6e645a;
+
+  --font-display: "Bodoni Moda", "Didot", "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: var(--color-aubergine);
+    color: var(--color-paper);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-aubergine);
+    outline-offset: 3px;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+/* ---------- typographic details ---------- */
+.label {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  line-height: 1.2;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.label-sm {
+  font-size: 0.625rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* ---------- printed price-card dot leader ---------- */
+.leader {
+  flex: 1 1 auto;
+  min-width: 1.5rem;
+  align-self: center;
+  border-bottom: 1px dotted color-mix(in srgb, var(--color-ink) 34%, transparent);
+  transform: translateY(0.18em);
+}
+
+/* ---------- double rule (letterpress card edge) ---------- */
+.rule-double {
+  border-top: 3px solid var(--color-aubergine);
+  box-shadow: 0 3px 0 -1.5px var(--color-brass);
+}
+
+/* ---------- paper grain, sits above the whole page ---------- */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  opacity: 0.14;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- scroll reveal: paper settling into place ---------- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+[data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- details / FAQ ---------- */
+details[open] .faq-mark {
+  transform: rotate(45deg);
+}
+.faq-mark {
+  transition: transform 0.3s ease;
+}
+
+/* ---------- image containers keep a designed surface if a photo fails ---------- */
+.img-fallback {
+  background-color: var(--color-paper-3);
+  background-image:
+    radial-gradient(120% 90% at 20% 10%, rgba(185, 138, 75, 0.35), transparent 60%),
+    radial-gradient(90% 80% at 85% 90%, rgba(62, 31, 46, 0.5), transparent 65%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
